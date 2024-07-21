@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Crud Application</title>
+</head>
+<body>
+    
+<div class="main"  id="app">
+    <h1 data-aos="fade-down">Student Management System</h1>
+<form id="studentForm" data-aos="zoom-out-down">
+    <div class="input-form">
+        <input type="text" required id="name" >
+        <label for="name">
+            <span style="transition-delay:0ms">F</span><span style="transition-delay:50ms">u</span><span
+                style="transition-delay:100ms">l</span><span style="transition-delay:150ms">l</span> <span
+                style="transition-delay:200ms">N</span><span style="transition-delay:250ms">a</span><span
+                style="transition-delay:300ms">m</span><span style="transition-delay:350ms">e</span>
+        </label>
+    </div>
+    <div class="input-form">
+        <input type="email"  id="email"  required>
+        <label for="email">
+            <span style="transition-delay:0ms">E -</span> <span style="transition-delay:50ms">m</span><span
+                style="transition-delay:100ms">a</span><span style="transition-delay:150ms">i</span><span
+                style="transition-delay:200ms">l</span>
+        </label>
+    </div>
+
+    <div class="input-form">
+        <input type="number" required=""  id="age"  required>
+        <label for="age">
+            <span style="transition-delay:0ms">A</span><span style="transition-delay:50ms">g</span><span
+                style="transition-delay:100ms">e</span>
+        </label>
+    </div>
+
+    <div class="input-form animated-dropdown">
+        <select id="course" required>
+            <option value="" disabled selected></option>
+            <option value="Physics">Physics</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Calculas">Calculas</option>
+            <option value="Oject oriented program">Oject oriented program</option>
+            <option value="Introductin to Computer">Introductin to Computer</option>
+        </select>
+        <label for="course">
+            <span style="transition-delay:0ms">S</span><span style="transition-delay:50ms">e</span><span
+                style="transition-delay:100ms">l</span><span style="transition-delay:150ms">e</span><span
+                style="transition-delay:200ms">c</span><span style="transition-delay:250ms">t</span>
+            <span style="transition-delay:300ms">C</span><span style="transition-delay:350ms">o</span><span
+                style="transition-delay:400ms">u</span><span style="transition-delay:450ms">r</span><span
+                style="transition-delay:500ms">s</span><span style="transition-delay:550ms">e</span>
+        </label>
+    </div>
+<button class="add-btn">
+    <span class="button-content" type="submit">Add Student </span>
+</button>
+</form>
+</div>
+
+
+
+
+
+
+<table id="studentTable" class="table table-striped" style="display:none;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Course</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<!-- modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: black">
+                <h5 class="modal-title" id="editModalLabel">Edit Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="cross">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <input type="hidden" id="editIndex" />
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="editName" class="form-control" required placeholder="Full Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="editEmail" class="form-control" required placeholder="Email" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="editAge" class="form-control" required placeholder="Age" />
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Course</label>
+                        <select id="editCourse" class="form-control" required>
+                            <option value="" disabled>Select Course</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Calculus">Calculus</option>
+                            <option value="Object Oriented Programming">Object Oriented Programming</option>
+                            <option value="Introduction to Computer">Introduction to Computer</option>
+                        </select>
+                    </div>
+                   
+                    <button class="update-btn" type="submit"> Update Student </button>
+                </form>
+            </div> 
+        </div>
+    </div>
+</div>
+
+
+    <script src="./assets/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
